@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title> {{product.product_name}} </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/view.css' %}">
+    <script src='main.js'></script>
+</head>
+<body>
+    
+    <div class="det">
+       <div class="part"> 
+     <div class="b"> 
+            <div class="slide">
+             <img src="{% static 'images/mobile.jpg' %}" width="100%">
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/mobile.jpg' %}" width="100%">
+            </div>
+            <div class="slide">
+             <img src="{% static 'images/mobile.jpg' %}" width="100%">
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/mobile.jpg' %}" width="100%">
+            </div>
+            <div class="slide">
+             <img src="{% static 'images/mobile.jpg' %}" width="100%">
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/mobile.jpg' %}" width="100%">
+            </div>
+            
+        </div>
+        
+        <div class="det1">
+            
+            <div>
+                <img src="/static/images/{{product.image}}" class="aaa"></div><br>
+                <form action="{% url 'cart' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{product.id}}" name="proid">
+                    <input type="hidden" value="1" name="qt">
+                    <input type="submit" class="btn btn-success btn-block" value="Add to cart">
+                </form>
+                
+                <button type="button" class="btn1"><h2><b>Buy Now</b></h2></button>
+            </div>
+         
+        <div>
+        
+        <div class="part1">
+            <div class="des">
+                <h1>{{product.product_name}}</h1>
+                <span class="pri">M.R.P ₹{{product.price}}</span><br>
+                <span class="bn">Brand:"One Plus"</span>
+            </div>  
+            <br>  
+            <div class="des-1">
+                <p class="details">{{product.desc}}<br><br>
+                    <li>.................................</li>
+                    <li>.................................</li>
+                    <li>.................................</li>
+                    <li>.................................</li>
+                    <li>.................................</li>
+                    <li>.................................</li>
+                </p>
+                <a href="#"></a>
+            </div>
+            <br>
+            <br>
+            <div class="des-2">
+                <h1>How to use?</h1><br>
+                <video width="320" height="240" controls>
+                    <source src="{% static 'videos/vid.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        
+        
+       </div> 
+    </div>
+</body>
+</html>

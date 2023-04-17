@@ -1,0 +1,369 @@
+<!-- Front page of Website-->
+{% load static %}
+<html>
+	<head>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			/*-----------------------------NAVI------------------------------*/
+			a:link {
+				text-decoration: none;
+			  }
+			a h2{
+				color: white;
+				font-size: 20px;
+			}
+			.us h2{
+				color: white;
+				font-size: 20px;
+			}
+			  
+			.dropdown{
+				position: relative;
+				display: inline-block;
+			}
+			.dropdown-content{
+				display: none;
+				position: absolute;
+				background-color: #eeeeee;
+				min-width: 100px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				padding: 16px 16px;
+			}
+			
+			.dropdown:hover .dropdown-content{
+				display: block;
+			}
+			.search{
+				width:550px;
+				height:45px;
+			}
+			a:hover {
+			  text-decoration: underline;
+			}
+			.logo{
+				height: 85px;
+			}
+			.button{
+				height: 45px;
+				width: 100px;
+			}
+			.navigationaaa{
+				position: fixed;
+				width: 100%;
+				z-index: 1000;
+				background-color: #2874F0;
+			}
+			.zzz{
+				display: flex;
+			}
+			
+			/*----------------------------------middle---------------*/
+			
+			.card img{
+				cursor: pointer;
+			}
+			.card img:hover{
+				-ms-transform: scale(1.1);
+				-webkit-transform: scale(1.1);
+				transform: scale(1.1);
+			}
+			/*------------------------------------------Footer------------------------------------------------------- */
+			
+		
+		</style>
+		<title>System Solution</title>
+
+		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body bgcolor="#F1F3F6">
+
+		<!------------------------------Navigation---------------------------------------------------------------->
+
+		<div>
+		<table class="navigationaaa">
+			<tr>
+        <td align="right"><img class="logo" src="{% static 'images/front/logo4.jpg' %}"></td>
+				<form action="{% url 'search_results' %}" method="get">
+				<td><input type="text" name="q"  class="search" placeholder="Search for the item" style="width:550px;height:45px;"></input>
+				<button class="button"><b>Search</b></button>
+			    </td>
+				</form>
+				<th>
+					
+						<a href="/">
+							<h2>Home</h2>
+						</a>
+					
+				</th>
+				{% if user.is_authenticated %}
+
+				<th class="us"><h2>Hello,{{user.first_name}}</h2>
+				<th>
+					
+					<a href="logout">
+						<h2>Logout</h2>
+					</a>
+				
+			    </th>
+				{% else %}
+				<th>
+					
+						<a href="login">
+							<h2>Login</h2>
+						</a>
+					
+				</th>
+				<th>
+					
+						<a href="register">
+							<h2>Register</h2>
+						</a>
+				</th>
+				{% endif %}
+        <th>
+        <ul class=" navbar-nav my-2 my-lg-0">
+          <li class="nav-item ">
+            <a class="nav-link" href="cart">Cart <i class="fa fa-shopping-cart">{{prods|length}}</i>
+            <span class="badge badge-info"></span>
+          </li>
+        
+        </th>
+			</tr>
+		</table>
+	    </div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br> 
+  <!------------------------------------------->
+ <!--Section: Block Content-->
+<section class="mb-5">
+
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+
+      <div id="mdb-lightbox-ui"></div>
+
+      <div class="mdb-lightbox">
+
+        <div class="row product-gallery mx-1">
+
+          <div class="col-12 mb-0">
+            <figure class="view overlay rounded z-depth-1 main-img">
+                <img src="/static/images/{{product.image}}"
+                  class="img-fluid z-depth-1">
+              </a>
+            </figure>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src=""
+                    class="img-fluid">
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src=""
+                    class="img-fluid">
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src=""
+                    class="img-fluid">
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src=""
+                    class="img-fluid">
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-6">
+
+      <h5>{{product.product_name}}</h5>
+      <p class="mb-2 text-muted text-uppercase small">{{product.category}}</p>
+      <p><span class="mr-1"><strong> &#8377;{{product.price}}</strong></span></p>
+      <p class="pt-1">{{product.desc}}</p>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless mb-0">
+          <tbody>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+              <td>xyz</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
+              <td>xyz</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
+              <td>xyz</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div class="table-responsive mb-2">
+      </div>
+      <button type="button" class="btn btn-light btn-md mr-1 mb-2"><a href="process_payment">Buy now</a></button>
+          <form action="{% url 'cart' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{product.id}}" name="proid">
+            <input type="hidden" value="1" name="qt">
+            <input type="submit" class="btn btn-success btn-block" value="Add to cart">
+        </form>
+    </div>
+  </div>
+</section>
+<!-- Classic tabs -->
+<div class="classic-tabs border rounded px-4 pt-1">
+
+  <ul class="nav tabs-primary nav-justified" id="advancedTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active show" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Information</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="advancedTabContent">
+    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+      <h5>Product Description</h5>
+      <p class="small text-muted text-uppercase mb-2">{{product.product_name}}</p>
+      <h6>&#8377;{{product.price}}</h6>
+      <p class="pt-1"></p>
+    </div>
+    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+      <h5>Additional Information</h5>
+      <table class="table table-striped table-bordered mt-3">
+        <thead>
+          <tr>
+            <th scope="row" class="w-150 dark-grey-text h6">Product Name</th>
+            <td><em>{{product.product_name}}</em></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="w-150 dark-grey-text h6">Price</th>
+            <td><em>{{product.price}}</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+      <h5>review for <span>{{product.product_name}}</span></h5>
+      <hr>
+        <!-- Your review -->
+        <div class="md-form md-outline">
+          <textarea id="form76" class="md-textarea form-control pr-6" rows="4"></textarea>
+          <label for="form76">Your review</label>
+        </div>
+        <!-- Name -->
+        <div class="md-form md-outline">
+          <input type="text" id="form75" class="form-control pr-6">
+          <label for="form75">Name</label>
+        </div>
+        <!-- Email -->
+        <div class="md-form md-outline">
+          <input type="email" id="form77" class="form-control pr-6">
+          <label for="form77">Email</label>
+        </div>
+        <div class="text-right pb-2">
+          <button type="button" class="btn btn-primary">Add a review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Classic tabs -->
+<div class="footer">
+	<div class="inner-footer">
+
+	<div class="footer-items">
+		<h1>System Solution</h1>
+		<div class="border"></div>
+			<p>.......................</p>
+	</div>
+
+	<div class="footer-items">
+		<h2>Links</h2>
+		<div class="border"></div>
+		<ul>
+		<a href="#"><li>Home</li></a>
+			<a href="#"><li>About us</li></a>
+			<a href="#"><li>contect us</li></a>
+			<a href="#"><li>Services</li></a>
+		</ul>	
+	</div>
+	<div class="footer-items">
+		<h2>Help</h2>
+		<div class="border"></div>
+		<ul class="a">
+			<a href="#"><li>Payment</li></a>
+			<a href="#"><li>Return</li></a>
+			<a href="#"><li>Shipping</li></a>
+			<a href="#"><li>Cancellation</li></a>
+			<a href="#"><li>Report</li></a>
+			<a href="#"><li>FAQ</li></a>
+		</ul>	
+	</div>
+	
+	<div class="footer-items">
+		<h2>CONTACT US</h2>
+		<div class="border"></div>
+		<ul>
+		   <a href="#"><li><i class="fa fa-map-marker"></i>location or Address</li></a>
+		   <a href="#"><li><i class="fa fa-phone"></i>12345678</li></a>
+		   <a href="#"><li><i class="fa fa-envelope"></i>abcdefghi@mail.com</li></a>
+		</ul>	
+	</div>
+	</div>
+  </div>
+<!--Section: Block Content--> 
+  <!------------------------------------------->
+  <script>
+    $(document).ready(function () {
+      // MDB Lightbox Init
+      $(function () {
+        $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+      });
+    });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+	</body>
+</html>

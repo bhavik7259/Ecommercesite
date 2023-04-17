@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #eeeeee;
+}
+
+* {
+  box-sizing: border-box;
+}
+.container {
+  background-color: #ffffff;
+  width: 500px;
+  margin: 50px auto 10px auto;
+  border-radius: 8px;
+  text-align: center;
+  padding: 50px;
+  box-shadow: 0 2px 10px -3px #333;
+  overflow: hidden;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  box-radius:100px;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+a {
+  color: dodgerblue;
+}
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+input{
+	border-radius: 100px;
+	border: 1px solid #D9D9D9;
+	padding: 10px 15px;
+	width: 50%;
+	outline: none;
+	display: block;
+	margin: 20px auto 20px auto;
+}

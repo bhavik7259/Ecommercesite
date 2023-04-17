@@ -1,0 +1,27 @@
+<!-- Login Page -->
+{% load static %}
+<html>
+	<head>
+		
+		<link rel="stylesheet" href="{% static 'css/login.css' %}">
+	</head>
+	<body>
+		<div class="msg">
+			{% for message in messages %}
+			<h1>{{message}}</h1>
+			{% endfor %}
+		</div>
+		<form action="login" method="POST">
+		{% csrf_token %}
+		<div class="form">
+			<img src="{% static 'images/log in.png' %}">
+			<input type="text" name="username" placeholder="username">
+			<input type="password" name="password" placeholder="password" >
+			<button type="submit">Log in</button>
+			
+			<a href="register">Create Account</a>
+		</div>
+		<form>
+
+	</body>
+</html>
